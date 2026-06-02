@@ -50,7 +50,7 @@ def test_runner_delegates_to_pytest(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr("pytest.main", lambda args: calls.append(args) or 0)
     runner = PytestRunner(verbosity=2, failfast=True)
     assert runner.run_tests(["tests/"]) == 0
-    assert calls and "-x" in calls[0] and "-v" in calls[0]
+    assert calls and "--exitfirst" in calls[0] and "-v" in calls[0]
 
 
 def test_pytest_command_forwards_args(monkeypatch: pytest.MonkeyPatch) -> None:
