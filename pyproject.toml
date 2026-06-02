@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=82.0.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-pytest"
+version = "0.1.0"
+description = "Native pytest integration for Django plus a test analysis & optimization engine."
+readme = "README.md"
+requires-python = ">=3.14"
+license = { text = "MIT" }
+authors = [{ name = "chrysa", email = "greau.anthony+chrysa@gmail.com" }]
+keywords = ["django", "pytest", "testing", "analysis", "optimization"]
+dependencies = [
+    "django>=4.2",
+    "pytest>=8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.14",
+    "mypy>=1.13.0",
+    "django-stubs>=5.1.0",
+]
+
+[project.entry-points.pytest11]
+django_pytest = "django_pytest.plugin"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["django_pytest*"]
+
+[tool.setuptools.package-data]
+django_pytest = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:django_pytest -p no:query_optimizer --tb=short"
+python_files = "tests_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py314"
+extend-exclude = [".pytest_cache/*", "*.egg-info/*", ".ruff_cache/*"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "N", "UP", "B", "C4", "ANN", "ARG"]
+ignore = ["E501", "ANN401"]
+fixable = ["ALL"]
+
+[tool.ruff.format]
+quote-style = "double"
+line-ending = "lf"
+
+[tool.ruff.lint.isort]
+force-single-line = true
+known-first-party = ["django_pytest", "tests"]
+lines-after-imports = 2
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+ignore_missing_imports = true
+# Django's base classes/decorators are untyped here (django-stubs needs a settings
+# module, which a reusable app does not own). Relax only these two strict sub-checks.
+disallow_subclassing_any = false
+disallow_untyped_decorators = false
+
+[tool.coverage.run]
+source = ["django_pytest"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
