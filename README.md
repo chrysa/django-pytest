@@ -49,6 +49,31 @@ Optionally make `manage.py test` delegate to pytest:
 TEST_RUNNER = "django_pytest.runner.PytestRunner"
 ```
 
+The runner adds flags that translate to pytest options, so the Django CLI stays
+the entry point:
+
+```bash
+python manage.py test --coverage-xml --markers unit db   # -> --cov ... -m "unit or db"
+python manage.py test --tests-html --verbosity 3         # HTML report, -vv
+python manage.py test --no-input --benchmark             # opt-in pytest-benchmark
+```
+
+| Flag | pytest translation | Notes |
+|---|---|---|
+| `--failfast` | `--exitfirst` | on by default |
+| `--markers a b` | `-m "a or b"` | repeatable; groups are OR-joined |
+| `--coverage-html/-txt/-xml` | `--cov --cov-branch --cov-report ...` | needs `pytest-cov` |
+| `--tests-html` / `--tests-xml` | `--html=...` / `--junitxml=...` | HTML needs `pytest-html` |
+| `--benchmark` | `--benchmark-*` | off by default; needs `pytest-benchmark` |
+| `--dependencies` | `--list-processed-dependencies` | needs `pytest-dependency` |
+| `--cache-clear` | `--cache-clear` | |
+| `--config PATH` | `--config-file PATH` | auto-detects `pytest.ini`/`pyproject.toml`/`setup.cfg` |
+| `--log-level LEVEL` | `--log-level LEVEL` | also sets `DJANGO_LOG_LEVEL` |
+| `--verbosity 0..3` | `-qq`/`-q`/`-v`/`-vv` + `--durations`/`--tb` | Django's own flag |
+
+Reports default to `./reports`; override the root with the
+`DJANGO_PYTEST_REPORTS_DIR` environment variable.
+
 ## Analyze (the "doctor")
 
 ```bash
