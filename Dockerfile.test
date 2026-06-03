@@ -1,0 +1,18 @@
+# Test image — runs the full suite with coverage gate (CI parity).
+# Built and run by `make docker-test`.
+FROM python:3.14-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir --upgrade pip setuptools>=70 wheel
+
+COPY pyproject.toml README.md ./
+COPY django_pytest/ ./django_pytest/
+COPY tests/ ./tests/
+
+RUN pip install --no-cache-dir -e ".[dev]"
+
+CMD ["sh", "-c", "coverage run -m pytest && coverage xml && coverage report --fail-under=80"]
