@@ -50,4 +50,7 @@ def patch_admin() -> None:
         ]
         return extra + list(original_get_urls())
 
+    # Intentional monkey-patch of the admin site's bound method (zero-config
+    # report view). mypy's [method-assign] is disabled for this module in
+    # pyproject.toml rather than via an inline ignore.
     admin.site.get_urls = get_urls

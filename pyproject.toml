@@ -70,6 +70,13 @@ ignore_missing_imports = true
 disallow_subclassing_any = false
 disallow_untyped_decorators = false
 
+# admin.py intentionally monkey-patches admin.site.get_urls to inject the report
+# view without forcing users to swap their AdminSite. The [method-assign] check
+# is disabled here (module-scoped, not inline) since the reassignment is by design.
+[[tool.mypy.overrides]]
+module = "django_pytest.admin"
+disable_error_code = ["method-assign"]
+
 [tool.coverage.run]
 source = ["django_pytest"]
 omit = ["tests/*"]
