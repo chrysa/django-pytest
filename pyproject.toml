@@ -44,7 +44,8 @@ python_functions = "test_*"
 [tool.ruff]
 line-length = 120
 indent-width = 4
-target-version = "py314"
+# py313 (not py314): ruff format <=0.15.15 strips multi-except parens under py314 — restore when fixed upstream
+target-version = "py313"
 extend-exclude = [".pytest_cache/*", "*.egg-info/*", ".ruff_cache/*"]
 
 [tool.ruff.lint]
