@@ -31,7 +31,7 @@ repos:
     stages:
     - manual
 - repo: https://github.com/chrysa/pre-commit-tools
-  rev: v0.1.1-92
+  rev: v0.1.1-93
   hooks:
   - exclude: ^(\.github/|workflows/|templates/)
     id: yaml-sorter
