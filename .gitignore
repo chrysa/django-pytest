@@ -1,3 +1,43 @@
+# Codegraph index
+.codegraph/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Test / lint caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# django-pytest runtime cache
+.django_pytest/
+
+# Virtualenv
+.venv/
+venv/
+
+# Benchmarks
+.benchmarks/
+
+# Local agent state
+.claude/
+
+# Editors
+.idea/
+.vscode/
+graphify
+sys
+graphify-out/
+.gitnexus
 1:# Codegraph index
 2:.codegraph/
 3:
