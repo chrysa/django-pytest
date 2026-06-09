@@ -1,6 +1,13 @@
 # django-pytest
 
-Native pytest integration for Django **plus** a test analysis & optimization engine.
+[![CI](https://github.com/chrysa/django-pytest/actions/workflows/ci.yml/badge.svg)](https://github.com/chrysa/django-pytest/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Run pytest against Django with zero boilerplate, then have the suite analyzed for
+slow tests, anti-patterns and coverage gaps — all from one package.
+
+**For** Django developers who use pytest and want their test suite both wired up
+automatically and continuously inspected for problems.
 
 Two things in one package:
 
@@ -125,3 +132,8 @@ make test        # pytest
 make lint        # ruff
 make typecheck   # mypy (strict)
 ```
+
+## Further reading
+
+- [ADR-001 — hybrid app + plugin design](docs/adr/ADR-001-hybrid-app-and-plugin.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
