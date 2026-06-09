@@ -38,3 +38,42 @@ graphify
 sys
 graphify-out/
 .gitnexus
+1:# Codegraph index
+2:.codegraph/
+3:
+4:# Python
+5:__pycache__/
+6:*.py[cod]
+7:*.egg-info/
+8:build/
+9:dist/
+10:.eggs/
+11:
+12:# Test / lint caches
+13:.pytest_cache/
+14:.ruff_cache/
+15:.mypy_cache/
+16:.coverage
+17:.coverage.*
+18:coverage.xml
+19:htmlcov/
+20:
+21:# django-pytest runtime cache
+22:.django_pytest/
+23:
+24:# Virtualenv
+25:.venv/
+26:venv/
+27:
+28:# Benchmarks
+29:.benchmarks/
+30:
+31:# Local agent state
+33:
+34:# Editors
+35:.idea/
+36:.vscode/
+37:graphify
+38:sys
+39:graphify-out/
+.claude/worktrees/
