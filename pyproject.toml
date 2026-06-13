@@ -28,7 +28,7 @@ dev = [
 django_pytest = "django_pytest.plugin"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["django_pytest*"]
 
 [tool.setuptools.package-data]
@@ -36,6 +36,7 @@ django_pytest = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = [".", "src"]
 addopts = "-p no:django_pytest -p no:query_optimizer --tb=short"
 python_files = "tests_*.py"
 python_classes = "Test*"

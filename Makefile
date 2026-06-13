@@ -20,13 +20,13 @@ test-cov: ## Run tests with coverage
 	pytest tests/ --cov=django_pytest --cov-report=term-missing --cov-report=xml
 
 lint: ## Run ruff linter
-	ruff check django_pytest tests
+	ruff check src/django_pytest tests
 
 format: ## Auto-format code
-	ruff format django_pytest tests
+	ruff format src/django_pytest tests
 
 typecheck: ## Run mypy type checking
-	mypy django_pytest
+	mypy src/django_pytest
 
 docker-test: ## Run tests in Docker (CI-compatible)
 	docker build -f Dockerfile.test -t django-pytest-test .
