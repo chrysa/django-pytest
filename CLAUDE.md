@@ -78,3 +78,12 @@ This project is indexed by GitNexus as **django-pytest** (558 symbols, 1010 rela
 | Index, status, clean, wiki CLI commands | `.claude/skills/gitnexus/gitnexus-cli/SKILL.md` |
 
 <!-- gitnexus:end -->
+
+<!-- ui-ux-skill: not-applicable -- reason: backend lib/scaffolder/gateway, no human-facing surface -->
+
+## Skills
+
+- `testing-pytest/SKILL.md` — pytest DDD + pytest-mock + constants (load when writing tests)
+
+Shared skills from `shared-standards/.claude/skills/`:
+- `dockerfile-multistage/SKILL.md` — 4-stage Python 3.14 containers (load when editing Dockerfile)
