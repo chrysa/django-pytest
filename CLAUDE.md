@@ -87,3 +87,7 @@ This project is indexed by GitNexus as **django-pytest** (558 symbols, 1010 rela
 
 Shared skills from `shared-standards/.claude/skills/`:
 - `dockerfile-multistage/SKILL.md` — 4-stage Python 3.14 containers (load when editing Dockerfile)
+
+<!-- chrysa:standards-import:start -->
+@.chrysa/STANDARDS.md
+<!-- chrysa:standards-import:end -->
