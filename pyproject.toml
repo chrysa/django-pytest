@@ -13,7 +13,7 @@ authors = [{ name = "chrysa", email = "greau.anthony+chrysa@gmail.com" }]
 keywords = ["django", "pytest", "testing", "analysis", "optimization"]
 dependencies = [
     "django>=6.0.6",
-    "pytest>=9.0.3",
+    "pytest>=9.1.1",
 ]
 
 [project.optional-dependencies]
