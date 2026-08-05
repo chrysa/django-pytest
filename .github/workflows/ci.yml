@@ -90,7 +90,7 @@ jobs:
                   project-key: chrysa_django-pytest
                   organization: chrysa
                   project-name: django-pytest
-                  sources: django_pytest
+                  sources: src
                   tests: tests
                   # Downloaded from the test-results-3.14 artifact into reports/
                   # by the action; matches sonar-scan-python's default path.
