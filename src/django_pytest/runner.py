@@ -192,7 +192,7 @@ class PytestRunner:
             if not params:
                 continue
             option = f"--{name.replace('_', '-')}"
-            if option in parser._option_string_actions:  # noqa: SLF001
+            if option in parser._option_string_actions:
                 continue
             kwargs = dict(params)
             if "help" in kwargs and "default" in kwargs:

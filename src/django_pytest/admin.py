@@ -10,6 +10,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpRequest
@@ -23,9 +24,21 @@ from django_pytest.reporters.html_reporter import render_html
 _PATCHED = False
 
 
+def _report_root() -> Path:
+    """Anchor analysis to the project root, not the server's current directory.
+
+    Prefer ``settings.BASE_DIR`` (the canonical project root) so the report is
+    identical whatever directory the process was started from; fall back to the
+    working directory only when the setting is unset.
+    """
+
+    base_dir = getattr(settings, "BASE_DIR", None)
+    return Path(base_dir) if base_dir is not None else Path.cwd()
+
+
 @staff_member_required
 def report_view(request: HttpRequest) -> HttpResponse:  # noqa: ARG001
-    root = Path.cwd()
+    root = _report_root()
     report = analyze(root, [root])
     return HttpResponse(render_html(report))
 
