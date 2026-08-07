@@ -135,7 +135,7 @@ def _start_query_capture() -> Any:
         ctx = CaptureQueriesContext(connection)
         ctx.__enter__()
         return ctx
-    except Exception:  # noqa: BLE001 - DB may be unavailable; degrade gracefully
+    except Exception:
         return None
 
 
@@ -145,7 +145,7 @@ def _stop_query_capture(ctx: Any) -> int:
     try:
         ctx.__exit__(None, None, None)
         return len(ctx.captured_queries)
-    except Exception:  # noqa: BLE001
+    except Exception:
         return 0
 
 
@@ -176,4 +176,4 @@ def _print_analysis(root: Path) -> None:
     from django_pytest.reporters.terminal import render_terminal
 
     report = analyze(root, [root])
-    print("\n" + render_terminal(report))  # noqa: T201 - intentional plugin output
+    print("\n" + render_terminal(report))
