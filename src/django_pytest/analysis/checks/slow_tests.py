@@ -30,18 +30,16 @@ class SlowTestCheck(Check):
         slow = [rec for rec in runtime.tests.values() if rec.duration >= ctx.slow_threshold]
         slow.sort(key=lambda r: r.duration, reverse=True)
 
-        findings: list[Finding] = []
-        for record in slow[:TOP_N]:
-            findings.append(
-                Finding(
-                    check_id=self.id,
-                    severity=self._severity(record.duration, ctx.slow_threshold),
-                    message=f"{record.nodeid} took {record.duration:.2f}s ({record.query_count} queries).",
-                    suggestion=self._suggestion(record.query_count),
-                    test_id=record.nodeid,
-                )
+        return [
+            Finding(
+                check_id=self.id,
+                severity=self._severity(record.duration, ctx.slow_threshold),
+                message=f"{record.nodeid} took {record.duration:.2f}s ({record.query_count} queries).",
+                suggestion=self._suggestion(record.query_count),
+                test_id=record.nodeid,
             )
-        return findings
+            for record in slow[:TOP_N]
+        ]
 
     @staticmethod
     def _severity(duration: float, threshold: float) -> Severity:

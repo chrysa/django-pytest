@@ -19,5 +19,5 @@ class DjangoPytestConfig(AppConfig):
             from django_pytest.admin import patch_admin
 
             patch_admin()
-        except Exception:  # noqa: BLE001 - admin is optional; never block app startup
+        except Exception:
             pass

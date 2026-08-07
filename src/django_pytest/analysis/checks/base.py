@@ -25,11 +25,11 @@ class Check(ABC):
 def iter_test_functions(tree: ast.Module) -> list[ast.FunctionDef | ast.AsyncFunctionDef]:
     """Yield top-level and class-nested ``test_*`` functions."""
 
-    functions: list[ast.FunctionDef | ast.AsyncFunctionDef] = []
-    for node in ast.walk(tree):
-        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith("test"):
-            functions.append(node)
-    return functions
+    return [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith("test")
+    ]
 
 
 def decorator_names(func: ast.FunctionDef | ast.AsyncFunctionDef) -> set[str]:

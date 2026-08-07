@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Any
+from typing import ClassVar
 
 import pytest
 
@@ -81,7 +82,7 @@ def test_add_arguments_builds_help_and_skips_existing() -> None:
     recorded: dict[str, dict[str, Any]] = {}
 
     class FakeParser:
-        _option_string_actions = {"--failfast": object()}
+        _option_string_actions: ClassVar[dict[str, object]] = {"--failfast": object()}
 
         def add_argument(self, option: str, **kwargs: Any) -> None:
             recorded[option] = kwargs

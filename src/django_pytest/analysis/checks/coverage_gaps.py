@@ -30,18 +30,16 @@ class CoverageGapCheck(Check):
         # Prioritize by absolute uncovered lines, then by how far below threshold.
         gaps.sort(key=lambda c: (c.missing_lines, ctx.coverage_threshold - c.line_rate), reverse=True)
 
-        findings: list[Finding] = []
-        for cov in gaps[:TOP_N]:
-            findings.append(
-                Finding(
-                    check_id=self.id,
-                    severity=self._severity(cov.line_rate, ctx.coverage_threshold),
-                    message=f"{cov.filename}: {cov.line_rate * 100:.0f}% covered, {cov.missing_lines} lines untested.",
-                    suggestion="Add tests for the uncovered branches; prioritize this file — it has the most untested lines.",
-                    path=cov.filename,
-                )
+        return [
+            Finding(
+                check_id=self.id,
+                severity=self._severity(cov.line_rate, ctx.coverage_threshold),
+                message=f"{cov.filename}: {cov.line_rate * 100:.0f}% covered, {cov.missing_lines} lines untested.",
+                suggestion="Add tests for the uncovered branches; prioritize this file — it has the most untested lines.",
+                path=cov.filename,
             )
-        return findings
+            for cov in gaps[:TOP_N]
+        ]
 
     @staticmethod
     def _severity(rate: float, threshold: float) -> Severity:

@@ -89,3 +89,27 @@ def test_db_unused():
     ctx.runtime = runtime
     msgs = [f.message for f in AntiPatternCheck().analyze(ctx)]
     assert any("no queries" in m for m in msgs)
+
+
+def test_db_marker_matches_parametrized_runtime(tmp_path: Path) -> None:
+    src = """
+import pytest
+
+
+@pytest.mark.django_db
+def test_param():
+    assert 1 == 1
+"""
+    (tmp_path / "tests_param.py").write_text(src, encoding="utf-8")
+    runtime = RunData()
+    # Parametrized nodeid ends in `[case]`, not a bare `::func_name`.
+    runtime.tests["tests_param.py::test_param[case1]"] = TestRecord(
+        nodeid="tests_param.py::test_param[case1]",
+        uses_db=True,
+        query_count=0,
+    )
+    ctx = build_context(tmp_path, [tmp_path])
+    ctx.runtime = runtime
+    findings = AntiPatternCheck().analyze(ctx)
+    assert any("no queries" in f.message for f in findings)
+    assert any(f.test_id == "tests_param.py::test_param[case1]" for f in findings)

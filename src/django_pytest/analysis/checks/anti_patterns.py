@@ -18,6 +18,18 @@ from django_pytest.analysis.runtime import TestRecord
 _DB_MARKERS = {"pytest.mark.django_db", "django_db"}
 
 
+def _nodeid_matches_func(nodeid: str, func_name: str) -> bool:
+    """Whether ``nodeid`` targets ``func_name``, including parametrized variants.
+
+    A plain test ends in ``::func_name``; a parametrized one ends in
+    ``::func_name[params]``. The bare ``endswith('::func_name')`` check misses the
+    latter, so parametrized tests were never matched to their runtime record.
+    """
+
+    tail = nodeid.rsplit("::", 1)[-1]
+    return tail == func_name or tail.startswith(f"{func_name}[")
+
+
 def _has_assertion(func: ast.FunctionDef | ast.AsyncFunctionDef) -> bool:
     for node in ast.walk(func):
         if isinstance(node, ast.Assert):
@@ -109,6 +121,6 @@ class AntiPatternCheck(Check):
     def _match_runtime(runtime: RunData, rel: str, func_name: str) -> TestRecord | None:
         filename = rel.split("/")[-1]
         for nodeid, record in runtime.tests.items():
-            if nodeid.endswith(f"::{func_name}") and filename in nodeid:
+            if filename in nodeid and _nodeid_matches_func(nodeid, func_name):
                 return record
         return None
