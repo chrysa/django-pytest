@@ -15,8 +15,13 @@ Two things in one package:
 ## Install
 
 ```bash
-pip install django-pytest
+pip install chrysa-django-pytest-runner
 ```
+
+> The PyPI distribution is named **`chrysa-django-pytest-runner`** (the short
+> `django-pytest` name is taken by an unrelated project). The Python import
+> package is unchanged — you still `import django_pytest` and add
+> `"django_pytest"` to `INSTALLED_APPS`.
 
 Add the app to `settings.py`:
 
