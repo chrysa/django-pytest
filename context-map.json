@@ -1,0 +1,36 @@
+{
+  "adrs": [
+    "ADR-001-hybrid-app-and-plugin.md"
+  ],
+  "contracts": [
+    "standards"
+  ],
+  "ddd_level": "(not available)",
+  "dependencies": {
+    "python": [
+      "django",
+      "django-stubs",
+      "mypy",
+      "pytest",
+      "pytest-cov",
+      "ruff"
+    ]
+  },
+  "depends_on_shared_standards": true,
+  "description": "Native pytest integration for Django plus a test analysis & optimization engine.",
+  "entry_points": [],
+  "key_directories": [
+    ".claude",
+    ".github",
+    "docs",
+    "examples",
+    "legal",
+    "scripts",
+    "src",
+    "standards",
+    "tests"
+  ],
+  "name": "django-pytest",
+  "profiles": [],
+  "schema": "chrysa.context-map/1"
+}
