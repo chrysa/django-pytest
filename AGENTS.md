@@ -99,6 +99,7 @@ This project is indexed by GitNexus as **django-pytest** (558 symbols, 1010 rela
 ### Documentation & session state · `standards/rules/docs.md`
 - Notion logging
 - Documentation and Notion are maintained in lockstep with the code — a change that leaves them stale is unfinished
+- Every repo ships generated context files
 - Session lifecycle (primer + memory + hindsight)
 
 ### AI agents & features · `standards/rules/agents.md`
