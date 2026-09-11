@@ -29,6 +29,53 @@ Native pytest integration for Django plus a test analysis & optimization engine.
     secret-scanner.cjs
     verifiable-thresholds.cjs
   settings.json
+  skills/
+    accessibility/
+      SKILL.md
+    agent-patterns/
+      SKILL.md
+    api-design/
+      SKILL.md
+    async-patterns/
+      SKILL.md
+    check/
+      SKILL.md
+      references/
+      reviewers/
+      scripts/
+    clean-architecture/
+      SKILL.md
+    contract-testing/
+      SKILL.md
+    council/
+      SKILL.md
+    dockerfile-multistage/
+      SKILL.md
+    error-handling/
+      SKILL.md
+    gitnexus/
+      gitnexus-cli/
+      gitnexus-debugging/
+      gitnexus-exploring/
+      gitnexus-guide/
+      gitnexus-impact-analysis/
+      gitnexus-refactoring/
+    hunt/
+      SKILL.md
+    implement/
+      SKILL.md
+    plan/
+      SKILL.md
+    spec/
+      SKILL.md
+    standards-authoring/
+      SKILL.md
+    testing-pytest/
+      SKILL.md
+    ui-ux/
+      SKILL.md
+    verification-loop/
+      SKILL.md
   thresholds.json
 .editorconfig
 .gitattributes
@@ -46,7 +93,6 @@ Native pytest integration for Django plus a test analysis & optimization engine.
     action-check.yml
     approved-label.yml
     auto-assign.yml
-    auto-update-pre-commit.yml
     ci.yml
     dependabot-auto-merge.yml
     detect-conflicts.yml
@@ -100,6 +146,7 @@ legal/
 opencode.json
 pyproject.toml
 scripts/
+  gen_context_files.py
   quality_gate.py
 src/
   django_pytest/
@@ -180,6 +227,7 @@ examples/demo/shop/__init__.py
 examples/demo/shop/apps.py — AppConfig for the demo shop app.
 examples/demo/shop/pricing.py — Tiny pricing helpers — one is tested, one is not (to create a coverage gap).
 examples/demo/shop/tests_pricing.py — Demo test suite with deliberate anti-patterns for `testcheck` to flag.
+scripts/gen_context_files.py — Generate the standardised per-repo context files from the repo's own content.
 scripts/quality_gate.py
 src/django_pytest/__init__.py — Native pytest integration for Django plus a test analysis & optimization engine.
 src/django_pytest/admin.py — Optional Django admin integration.
@@ -209,4 +257,3 @@ tests/__init__.py
 tests/conftest.py — Configures a minimal Django environment for the integration tests.
 tests/tests_anti_patterns.py — AST-based anti-pattern detection.
 tests/tests_checks_runtime.py — Slow-test, parallelization and coverage-gap checks.
-tests/tests_context.py — Test-file discovery: pruning, globbing and explicit-failure behaviour.
