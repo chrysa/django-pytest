@@ -23,6 +23,14 @@ Native pytest integration for Django plus a test analysis & optimization engine.
     README.md
     ape-transform-v2.md
     ape_hook.py
+  commands/
+    adr-new.md
+    commit.md
+    custom-init.md
+    help-commands.md
+    issue.md
+    reviewpr.md
+    test.md
   hooks/
     circuit-breaker.cjs
     frustration-detection.cjs
