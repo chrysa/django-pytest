@@ -73,6 +73,16 @@
             "type": "command"
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'f=\"$CLAUDE_PROJECT_DIR/.claude/hooks/analysis-import-boundary.cjs\"; [ ! -f \"$f\" ] || node \"$f\"'",
+            "timeout": 5000
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [
