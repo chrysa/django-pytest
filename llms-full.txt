@@ -32,8 +32,11 @@ Native pytest integration for Django plus a test analysis & optimization engine.
     reviewpr.md
     test.md
   hooks/
+    analysis-import-boundary.cjs
     circuit-breaker.cjs
+    claude-config-drift.cjs
     frustration-detection.cjs
+    graphify-auto-update.cjs
     secret-scanner.cjs
     verifiable-thresholds.cjs
   settings.json
@@ -118,6 +121,7 @@ Native pytest integration for Django plus a test analysis & optimization engine.
 .mcp.json
 .pre-commit-config.yaml
 AGENTS.md
+ARCHITECTURE.md
 CHANGELOG.md
 CLAUDE.md
 CODEOWNERS
@@ -185,6 +189,7 @@ standards/
     README.md
     accessibility.md
     agents.md
+    ai-orchestration.md
     api.md
     architecture.md
     backend-python.md
