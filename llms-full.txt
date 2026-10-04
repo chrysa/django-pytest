@@ -77,6 +77,8 @@ Native pytest integration for Django plus a test analysis & optimization engine.
       SKILL.md
     plan/
       SKILL.md
+    rollout-status/
+      SKILL.md
     spec/
       SKILL.md
     standards-authoring/
@@ -89,6 +91,7 @@ Native pytest integration for Django plus a test analysis & optimization engine.
       SKILL.md
   thresholds.json
 .editorconfig
+.env.example
 .gitattributes
 .github/
   CODEOWNERS
