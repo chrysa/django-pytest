@@ -33,7 +33,15 @@ tests/                   # tests_*.py (pure-Python, no settings needed)
 
 ## Decisions
 
-See `DECISIONS.md` → ADR-001 (hybrid app + plugin).
+See `DECISIONS.md` (index) and `docs/adr/ADR-001-hybrid-app-and-plugin.md` (canonical).
+
+## Documentation map
+
+Root docs (descriptive, tagged FACT/INFERENCE/UNKNOWN): `PRD.md` · `TRD.md` ·
+`ARCHITECTURE.md` · `REQUIREMENTS.md` (REQ matrix) · `CONSTRAINTS.md` ·
+`DECISIONS.md` (ADR index) · `TESTING.md` · `SECURITY.md` · `GLOSSARY.md` ·
+`REVIEW.md` (contradictions + doc debt). OBSERVABILITY/ROADMAP intentionally
+absent (nothing to document — see REVIEW.md).
 
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
