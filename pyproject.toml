@@ -4,15 +4,24 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-pytest"
-version = "0.1.0"
+version = "0.1.0a1"
 description = "Native pytest integration for Django plus a test analysis & optimization engine."
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.13"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
+    "Framework :: Django :: 6.0",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
 license = { text = "MIT" }
 authors = [{ name = "chrysa", email = "greau.anthony+chrysa@gmail.com" }]
 keywords = ["django", "pytest", "testing", "analysis", "optimization"]
 dependencies = [
-    "django>=6.1",
+    "django>=5.0,<7",
     "pytest>=9.1.1",
 ]
 
