@@ -50,6 +50,18 @@
             "timeout": 10000
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-compact.sh"
+            ],
+            "timeout": 10
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -97,6 +109,19 @@
             "timeout": 5000
           }
         ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/read_guard.py"
+            ],
+            "timeout": 10
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [
@@ -115,6 +140,20 @@
           {
             "type": "command",
             "command": "sh -c 'f=\"$CLAUDE_PROJECT_DIR/.claude/ape/ape_hook.py\"; s=\"$CLAUDE_PROJECT_DIR/.claude/ape/ape-transform-v2.md\"; [ ! -f \"$f\" ] || python3 \"$f\" --spec \"$s\"'"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/session-context.sh"
+            ],
+            "timeout": 10
           }
         ]
       }
