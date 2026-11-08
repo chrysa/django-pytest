@@ -9,6 +9,7 @@ Native pytest integration for Django plus a test analysis & optimization engine.
 
 .claude/
   agents/
+    code-reviewer.md
     general-backend-developer.md
     general-code-quality-debugger.md
     general-devops.md
@@ -19,29 +20,29 @@ Native pytest integration for Django plus a test analysis & optimization engine.
     general-solution-architect.md
     general-technical-project-lead.md
     general-technical-writer.md
+    security-auditor.md
+    test-runner.md
   ape/
     README.md
     ape-transform-v2.md
     ape_hook.py
-  commands/
-    adr-new.md
-    commit.md
-    custom-init.md
-    help-commands.md
-    issue.md
-    reviewpr.md
-    test.md
   hooks/
     analysis-import-boundary.cjs
     circuit-breaker.cjs
     claude-config-drift.cjs
+    format.py
     frustration-detection.cjs
     graphify-auto-update.cjs
+    pre-compact.sh
+    read_guard.py
     secret-scanner.cjs
+    session-context.sh
     verifiable-thresholds.cjs
   settings.json
   skills/
     accessibility/
+      SKILL.md
+    adr-new/
       SKILL.md
     agent-patterns/
       SKILL.md
@@ -56,9 +57,13 @@ Native pytest integration for Django plus a test analysis & optimization engine.
       scripts/
     clean-architecture/
       SKILL.md
+    commit/
+      SKILL.md
     contract-testing/
       SKILL.md
     council/
+      SKILL.md
+    custom-init/
       SKILL.md
     dockerfile-multistage/
       SKILL.md
@@ -71,17 +76,29 @@ Native pytest integration for Django plus a test analysis & optimization engine.
       gitnexus-guide/
       gitnexus-impact-analysis/
       gitnexus-refactoring/
+    help-commands/
+      SKILL.md
     hunt/
       SKILL.md
     implement/
       SKILL.md
+    issue/
+      SKILL.md
     plan/
       SKILL.md
+    review-changes/
+      SKILL.md
+    reviewpr/
+      SKILL.md
     rollout-status/
+      SKILL.md
+    skills/
       SKILL.md
     spec/
       SKILL.md
     standards-authoring/
+      SKILL.md
+    test/
       SKILL.md
     testing-pytest/
       SKILL.md
@@ -229,12 +246,14 @@ tests/
 
 license: MIT
 name: django-pytest
-requires-python: >=3.14
-version: 0.1.0
+requires-python: >=3.13
+version: 0.1.0a1
 
 ## Modules
 
 .claude/ape/ape_hook.py
+.claude/hooks/format.py
+.claude/hooks/read_guard.py
 examples/demo/conftest.py — Point pytest at the demo settings so the django-pytest plugin configures Django.
 examples/demo/demo_project/__init__.py
 examples/demo/demo_project/settings.py — Minimal Django settings for the django-pytest demo project.
@@ -272,5 +291,3 @@ src/django_pytest/reporters/terminal.py — Human-readable terminal reporter (AN
 src/django_pytest/runner.py — A configurable Django ``TEST_RUNNER`` that delegates to pytest.
 tests/__init__.py
 tests/conftest.py — Configures a minimal Django environment for the integration tests.
-tests/tests_anti_patterns.py — AST-based anti-pattern detection.
-tests/tests_checks_runtime.py — Slow-test, parallelization and coverage-gap checks.
